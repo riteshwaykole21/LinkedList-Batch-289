@@ -26,6 +26,8 @@ namespace LinkedListProblem
                 tempNode.Next = newNode;
             }
         }
+
+
         public void AddFirst(int data)
         {
             Node newNode = new Node(data);
@@ -36,6 +38,7 @@ namespace LinkedListProblem
                 newNode.Next = headNode;
                 headNode = newNode;
             }
+
         }
         public void AddLast(int data)
         {
@@ -48,6 +51,7 @@ namespace LinkedListProblem
                 tailNode = newNode;
             }
         }
+
         public void ReversOrder(int data)
         {
             Node newNode = new Node(data);
@@ -90,6 +94,45 @@ namespace LinkedListProblem
                 }
                 laastNode.Next = null;
                 Console.WriteLine("the last element is deleted");
+            }
+        }
+        public void Find(int FindData)
+        {
+            int count = 0;
+            Node tempNode = this.headNode;
+            if (tempNode == null)
+                Console.WriteLine("Linke list is empty");
+            else
+            {
+                while (tempNode != null)
+                {
+                    if (tempNode.Data.Equals(FindData))
+                    {
+                        count++;
+                    }
+                    tempNode = tempNode.Next;
+                }
+            }
+            if (count > 0)
+                Console.WriteLine(FindData + " data found " + count + ": time ");
+            else
+                Console.WriteLine(" data not found\n");
+        }
+
+        public void Size()
+        {
+            int size = 0;
+            Node tempNode = this.headNode;
+            if (tempNode == null)
+                Console.WriteLine("Linke list is empty");
+            else
+            {
+                while (tempNode != null)
+                {
+                    tempNode = tempNode.Next;
+                    size++;
+                }
+                Console.WriteLine("Size :" + size);
             }
         }
         public void Display()
