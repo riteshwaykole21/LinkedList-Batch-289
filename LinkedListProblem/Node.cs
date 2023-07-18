@@ -7,12 +7,18 @@ using System.Threading.Tasks;
 namespace LinkedListProblem
 {
     public class Node
-    {
+    {        
         public int Data;
         public Node Next;
         public Node(int data)
         {
-            Data = data;    
+            Data = data;
+        }
+        public Node(int data, Node next)
+        {
+            Data = data;
+            Next = next;
         }
     }
 }
+
