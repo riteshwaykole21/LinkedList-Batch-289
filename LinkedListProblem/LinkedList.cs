@@ -8,24 +8,74 @@ namespace LinkedListProblem
 {
     public class LinkedList
     {
-        public Node Head;
-        public void Add(int Data)
+        public Node headNode;
+        public Node tailNode;
+        public void Add(int data)
         {
-            Node node = new Node(Data);
-            if(this.Head == null)
+            Node newNode = new Node(data);
+
+            if (this.headNode == null)
+                this.headNode = newNode;
+            else
             {
-                this.Head = node;   
+                Node tempNode = headNode;
+                while (tempNode.Next != null)
+                {
+                    tempNode = tempNode.Next;
+                }
+                tempNode.Next = newNode;
+            }
+        }
+        public void AddFirst(int data)
+        {
+            Node newNode = new Node(data);
+            newNode.Next = headNode;
+            headNode = newNode;
+        }
+        public void AddLast(int data)
+        {
+            Node newNode = new Node(data);
+            if (headNode == null)
+                tailNode = headNode = newNode;
+            else
+            {
+                tailNode.Next = newNode;
+                tailNode = newNode;
+            }
+        }
+        public void ReversOrder(int data)
+        {
+            Node newNode = new Node(data);
+
+            if (this.headNode == null)
+                this.headNode = newNode;
+            else
+            {
+                Node tempNode = this.headNode;
+                headNode = newNode;
+                headNode.Next = tempNode;
+            }
+            Console.WriteLine(newNode.Data + " is inserted into the linked list");
+        }
+
+        public void Display()
+        {
+            Node tempNode = this.headNode;
+            if (tempNode == null)
+            {
+                Console.WriteLine("Linked list is empty");
             }
             else
             {
-                Node temp = Head;
-                while(temp.Next != null)
+                Console.Write("Linked list is: ");
+                while (tempNode != null)
                 {
-                    temp = temp.Next;   
+                    Console.Write(tempNode.Data + " ");
+                    tempNode = tempNode.Next;
                 }
-                temp.Next = node;
+                Console.WriteLine("\n");
             }
-            Console.WriteLine($"{node.Data} inserted Into LinkedList");
         }
     }
 }
+
